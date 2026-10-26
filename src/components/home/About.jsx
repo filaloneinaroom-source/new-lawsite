@@ -8,7 +8,7 @@ export default function About(){
   return (
     <section id="about" className="about section">
       <div className="wrap">
-        <Photo />
+        <Photo src="/assets/lawphoto.jpg" />
         <div>
           <h2>{t("about")}</h2>
           <p>{t("aboutText")}</p>
