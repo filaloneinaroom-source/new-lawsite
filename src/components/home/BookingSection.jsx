@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionHead from "../SectionHead";
 import { WHATSAPP } from "../../config";
+import { useAvailability } from "../../context/AvailabilityContext";
 import { useLang } from "../../context/LangContext";
 import { getLocalizedService } from "../../i18n/translations";
 import { useServices } from "../../context/ServicesContext";
@@ -13,6 +14,7 @@ const Field = ({ label, children }) => <label>{label}{children}</label>;
 // preset = { title } — услуга, выбранная в модальном окне
 export default function BookingSection({ preset }){
   const { t, lang } = useLang();
+  const { available } = useAvailability();
   const { services } = useServices();
   const toast = useToast();
   const [form, setForm] = useState(EMPTY);
@@ -37,7 +39,9 @@ export default function BookingSection({ preset }){
   return (
     <section id="booking" className="wrap section">
       <SectionHead title={t("book")} />
-      <form className="form" onSubmit={submit}>
+      {!available
+        ? <p className="error availability-notice" role="status">{t("temporarilyUnavailable")}</p>
+        : <form className="form" onSubmit={submit}>
         <div className="fields">
           <Field label={t("name")}>
             <input name="name" required minLength={2} value={form.name} onChange={set("name")} />
@@ -62,6 +66,7 @@ export default function BookingSection({ preset }){
         </div>
         <button className="btn">{t("send")}</button>
       </form>
+      }
     </section>
   );
 }

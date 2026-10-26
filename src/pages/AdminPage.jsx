@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../components/Modal";
 import SectionHead from "../components/SectionHead";
 import { useLang } from "../context/LangContext";
+import { useAvailability } from "../context/AvailabilityContext";
 import { useServices } from "../context/ServicesContext";
 import { getLocalizedService } from "../i18n/translations";
 import { useToast } from "../context/ToastContext";
@@ -44,6 +45,7 @@ function ServiceForm({ service, onSave }){
 
 export default function AdminPage(){
   const { t, lang } = useLang();
+  const { available, setAvailable } = useAvailability();
   const { services, saveService, removeService } = useServices();
   const toast = useToast();
   const [editing, setEditing] = useState(null);   // null — закрыто, {} — новая, объект — правка
@@ -54,6 +56,20 @@ export default function AdminPage(){
   return (
     <section className="wrap section">
       <SectionHead title={t("admin")} />
+      <div className="availability-panel">
+        <div>
+          <h3>{t("attorneyAvailability")}</h3>
+          <p className="hint">{t(available ? "acceptingRequests" : "notAcceptingRequests")}</p>
+        </div>
+        <button
+          type="button"
+          className={`btn ${available ? "ghost" : ""}`}
+          aria-pressed={available}
+          onClick={() => setAvailable(!available)}
+        >
+          {t(available ? "pauseBooking" : "resumeBooking")}
+        </button>
+      </div>
       <div className="stats">
         <StatCard n={services.length} label={t("services")} />
         <StatCard n={bookings.length} label={t("bookings")} />

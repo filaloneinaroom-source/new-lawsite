@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../Modal";
 import SectionHead from "../SectionHead";
+import { useAvailability } from "../../context/AvailabilityContext";
 import { useLang } from "../../context/LangContext";
 import { useServices } from "../../context/ServicesContext";
 import { getLocalizedService } from "../../i18n/translations";
@@ -17,6 +18,7 @@ function ServiceCard({ s, localized, onOpen }){
 // onBook(title) — «Запись на консультацию» из модалки: прокрутка к форме и выбор услуги
 export default function ServicesSection({ onBook }){
   const { t, lang } = useLang();
+  const { available } = useAvailability();
   const { services } = useServices();
   const [category, setCategory] = useState("all");
   const [selected, setSelected] = useState(null);
@@ -44,9 +46,11 @@ export default function ServicesSection({ onBook }){
           <h3>{localizedSelected.title}</h3>
           <p>{localizedSelected.text}</p>
           <ul>{localizedSelected.points.map(p => <li key={p}>{p}</li>)}</ul>
-          <button className="btn gold" onClick={() => { const title = selected.title; setSelected(null); onBook(title); }}>
-            {t("book")}
-          </button>
+          {available && (
+            <button className="btn gold" onClick={() => { const title = selected.title; setSelected(null); onBook(title); }}>
+              {t("book")}
+            </button>
+          )}
         </>}
       </Modal>
     </section>
