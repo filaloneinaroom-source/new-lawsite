@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SectionHead from "../SectionHead";
 import { WHATSAPP } from "../../config";
 import { useLang } from "../../context/LangContext";
+import { getLocalizedService } from "../../i18n/translations";
 import { useServices } from "../../context/ServicesContext";
 import { useToast } from "../../context/ToastContext";
 import { addBooking } from "../../utils/storage";
@@ -11,7 +12,7 @@ const Field = ({ label, children }) => <label>{label}{children}</label>;
 
 // preset = { title } — услуга, выбранная в модальном окне
 export default function BookingSection({ preset }){
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { services } = useServices();
   const toast = useToast();
   const [form, setForm] = useState(EMPTY);
@@ -25,8 +26,9 @@ export default function BookingSection({ preset }){
   const submit = e => {
     e.preventDefault();
     const type = t(form.type);
+    const localizedService = getLocalizedService(services.find(s => s.title === service), lang)?.title || service;
     addBooking({ name: form.name, phone: form.phone, service, type, text: form.text, date: new Date().toISOString() });
-    const msg = `Здравствуйте! Имя: ${form.name}\nТелефон: ${form.phone}\nНаправление: ${service}\nФормат: ${type}\nВопрос: ${form.text || "—"}`;
+    const msg = `${t("greeting")}!\n${t("name")}: ${form.name}\n${t("phone")}: ${form.phone}\n${t("direction")}: ${localizedService}\n${t("format")}: ${type}\n${t("question")}: ${form.text || "—"}`;
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
     toast(t("sent"));
     setForm(EMPTY);
@@ -45,7 +47,7 @@ export default function BookingSection({ preset }){
           </Field>
           <Field label={t("direction")}>
             <select name="service" value={service} onChange={set("service")}>
-              {services.map(s => <option key={s.id}>{s.title}</option>)}
+              {services.map(s => <option key={s.id} value={s.title}>{getLocalizedService(s, lang).title}</option>)}
             </select>
           </Field>
           <Field label={t("format")}>

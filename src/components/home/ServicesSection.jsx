@@ -3,23 +3,25 @@ import Modal from "../Modal";
 import SectionHead from "../SectionHead";
 import { useLang } from "../../context/LangContext";
 import { useServices } from "../../context/ServicesContext";
+import { getLocalizedService } from "../../i18n/translations";
 
-function ServiceCard({ s, onOpen }){
+function ServiceCard({ s, localized, onOpen }){
   const { t } = useLang();
   return (
     <button className="card" onClick={() => onOpen(s)}>
-      <small>{s.cat}</small><h3>{s.title}</h3><p>{s.short}</p><b>{t("details")}</b>
+      <small>{localized.cat}</small><h3>{localized.title}</h3><p>{localized.short}</p><b>{t("details")}</b>
     </button>
   );
 }
 
 // onBook(title) — «Запись на консультацию» из модалки: прокрутка к форме и выбор услуги
 export default function ServicesSection({ onBook }){
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { services } = useServices();
   const [category, setCategory] = useState("all");
   const [selected, setSelected] = useState(null);
   const cats = ["all", ...new Set(services.map(s => s.cat))];
+  const localizedSelected = selected && getLocalizedService(selected, lang);
 
   return (
     <section id="services" className="wrap section">
@@ -27,21 +29,21 @@ export default function ServicesSection({ onBook }){
       <div className="chips">
         {cats.map(c => (
           <button key={c} className={"chip" + (c === category ? " on" : "")} onClick={() => setCategory(c)}>
-            {c === "all" ? t("all") : c}
+            {c === "all" ? t("all") : getLocalizedService(services.find(s => s.cat === c), lang).cat}
           </button>
         ))}
       </div>
       <div className="grid">
         {services.filter(s => category === "all" || s.cat === category)
-          .map(s => <ServiceCard key={s.id} s={s} onOpen={setSelected} />)}
+          .map(s => <ServiceCard key={s.id} s={s} localized={getLocalizedService(s, lang)} onOpen={setSelected} />)}
       </div>
 
       <Modal open={!!selected} onClose={() => setSelected(null)}>
-        {selected && <>
-          <small style={{ color: "var(--accent)" }}>{selected.cat}</small>
-          <h3>{selected.title}</h3>
-          <p>{selected.text}</p>
-          <ul>{selected.points.map(p => <li key={p}>{p}</li>)}</ul>
+        {localizedSelected && <>
+          <small style={{ color: "var(--accent)" }}>{localizedSelected.cat}</small>
+          <h3>{localizedSelected.title}</h3>
+          <p>{localizedSelected.text}</p>
+          <ul>{localizedSelected.points.map(p => <li key={p}>{p}</li>)}</ul>
           <button className="btn gold" onClick={() => { const title = selected.title; setSelected(null); onBook(title); }}>
             {t("book")}
           </button>

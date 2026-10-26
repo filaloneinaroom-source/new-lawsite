@@ -24,9 +24,9 @@ export function AuthProvider({ children }){
     if (!u) return false;
     startSession(u); return true;
   };
-  const register = (email, pass) => {
+  const register = (name, email, pass) => {
     const list = getUsers(); if (list.some(x => x.email === email)) return false;
-    const u = { email, pass, role: "user" };
+    const u = { name, email, pass, role: "user" };
     saveUsers([...list, u]); startSession(u); return true;
   };
   const logout = () => { store.remove("token"); setToken(null); };

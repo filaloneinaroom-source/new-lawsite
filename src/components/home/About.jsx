@@ -13,7 +13,7 @@ export default function About(){
           <h2>{t("about")}</h2>
           <p>{t("aboutText")}</p>
           <ul className="facts">
-            <li><span>Статус</span>Адвокат</li>
+            <li><span>{t("status")}</span>{t("attorney")}</li>
             <li><span>{t("format")}</span>{t("onsite")} / {t("online")}</li>
           </ul>
           <button className="btn gold" onClick={() => scrollTo("booking")}>{t("book")}</button>

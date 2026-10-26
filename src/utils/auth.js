@@ -7,7 +7,7 @@ const enc = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/
 const dec = s => JSON.parse(decodeURIComponent(escape(atob(s))));
 
 export function signToken(u){
-  const h = enc({alg:"HS256", typ:"JWT"}), p = enc({sub:u.email, role:u.role, exp:Date.now() + 3600e3});
+  const h = enc({alg:"HS256", typ:"JWT"}), p = enc({sub:u.email, name:u.name, role:u.role, exp:Date.now() + 3600e3});
   return `${h}.${p}.${hash(h + "." + p + SECRET)}`;
 }
 

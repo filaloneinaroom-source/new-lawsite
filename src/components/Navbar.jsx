@@ -23,11 +23,12 @@ export default function Navbar(){
           {session?.role === "admin" && <li><Link className="link" to="/admin">{t("admin")}</Link></li>}
         </ul>
         <div className="tools">
-          <select className="sel" aria-label="Language" value={lang} onChange={e => setLang(e.target.value)}>
+          <select className="sel" aria-label={t("language")} value={lang} onChange={e => setLang(e.target.value)}>
             <option value="ru">RU</option>
             <option value="en">EN</option>
+            <option value="ky">KY</option>
           </select>
-          <button className="icon" aria-label="Theme" onClick={toggleTheme}>{theme === "dark" ? "☀" : "☾"}</button>
+          <button className="icon" aria-label={t("theme")} onClick={toggleTheme}>{theme === "dark" ? "☀" : "☾"}</button>
           <button className="btn ghost" onClick={() => navigate(session ? "/profile" : "/login")}>
             {session ? t("profile") : t("login")}
           </button>

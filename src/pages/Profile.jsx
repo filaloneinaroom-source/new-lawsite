@@ -11,9 +11,10 @@ export default function Profile(){
     <section className="wrap section narrow">
       <SectionHead title={t("profile")} />
       <ul className="facts">
-        <li><span>Email</span>{session.sub}</li>
-        <li><span>Role</span>{session.role}</li>
-        <li><span>JWT</span>{new Date(session.exp).toLocaleTimeString()}</li>
+        {session.name && <li><span>{t("fullName")}</span>{session.name}</li>}
+        <li><span>{t("emailLabel")}</span>{session.sub}</li>
+        <li><span>{t("role")}</span>{t(session.role === "admin" ? "adminRole" : "userRole")}</li>
+        <li><span>{t("token")}</span>{new Date(session.exp).toLocaleTimeString()}</li>
       </ul>
       <code>{token}</code><br />
       <button className="btn ghost" onClick={() => { logout(); navigate("/"); }}>{t("logout")}</button>

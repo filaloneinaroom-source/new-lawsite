@@ -5,9 +5,9 @@ export default function TrustBar(){
   return (
     <div className="trust">
       <ul className="wrap">
-        <li>Конфиденциальность</li>
-        <li>Честная оценка перспектив</li>
-        <li>Понятный язык</li>
+        <li>{t("confidentiality")}</li>
+        <li>{t("honestAssessment")}</li>
+        <li>{t("plainLanguage")}</li>
         <li>{t("onsite")} / {t("online")}</li>
       </ul>
     </div>
