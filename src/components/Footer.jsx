@@ -16,7 +16,7 @@ export default function Footer(){
               <circle className="icon-fill" cx="17.5" cy="6.5" r="1" />
             </svg>
           </a>
-          <a href="mailto:sydygalievameerim48@gmail.com" aria-label="Email" title="sydygalievameerim48@gmail.com">
+          <a href="https://mail.google.com/mail/?view=cm&to=sydygalievameerim48%40gmail.com" target="_blank" rel="noreferrer" aria-label="Email" title="sydygalievameerim48@gmail.com">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="m4 7 8 6 8-6" />
