@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Hero from "../components/home/Hero";
-import TrustBar from "../components/home/TrustBar";
 import ServicesSection from "../components/home/ServicesSection";
 import ArticlesSection from "../components/home/ArticlesSection";
 import About from "../components/home/About";
@@ -16,7 +15,6 @@ export default function Home(){
   return (
     <>
       <Hero />
-      <TrustBar />
       <ServicesSection onBook={book} />
       <ArticlesSection />
       <About />
