@@ -145,6 +145,7 @@ dialog li{margin-bottom:6px}
 .skeleton{height:150px;border-radius:14px;background:linear-gradient(90deg,var(--line),var(--surface),var(--line));background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
 .pager{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.pager .chip{display:grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%}
 .error{padding:20px;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
 .stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
