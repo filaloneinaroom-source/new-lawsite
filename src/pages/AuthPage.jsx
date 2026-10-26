@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SectionHead from "../components/SectionHead";
 import { useAuth } from "../context/AuthContext";
@@ -11,6 +12,34 @@ export default function AuthPage({ mode }){
   const toast = useToast();
   const navigate = useNavigate();
   const isLogin = mode === "login";
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const passwordField = (name, value, autoComplete, visible, setVisible) => (
+    <div className="password-field">
+      <input
+        name={name}
+        type={visible ? "text" : "password"}
+        autoComplete={autoComplete}
+        required
+        minLength={4}
+        placeholder={t(value)}
+      />
+      <button
+        type="button"
+        className="password-toggle"
+        aria-label={t(visible ? "hidePassword" : "showPassword")}
+        title={t(visible ? "hidePassword" : "showPassword")}
+        onClick={() => setVisible(current => !current)}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
+          <circle cx="12" cy="12" r="3" />
+          {visible && <path d="m4 4 16 16" />}
+        </svg>
+      </button>
+    </div>
+  );
 
   const submit = e => {
     e.preventDefault();
@@ -32,8 +61,8 @@ export default function AuthPage({ mode }){
       <form className="stack" onSubmit={submit}>
         {!isLogin && <input name="name" type="text" autoComplete="name" required minLength={2} placeholder={t("fullName")} />}
         <input name="email" type="email" required placeholder={t("email")} />
-        <input name="pass" type="password" autoComplete={isLogin ? "current-password" : "new-password"} required minLength={4} placeholder={t("password")} />
-        {!isLogin && <input name="confirmPass" type="password" autoComplete="new-password" required minLength={4} placeholder={t("confirmPassword")} />}
+        {passwordField("pass", "password", isLogin ? "current-password" : "new-password", showPassword, setShowPassword)}
+        {!isLogin && passwordField("confirmPass", "confirmPassword", "new-password", showConfirmPassword, setShowConfirmPassword)}
         <button className="btn">{isLogin ? t("login") : t("register")}</button>
       </form>
       {isLogin && <p className="hint">{t("googleSuggestion")}</p>}

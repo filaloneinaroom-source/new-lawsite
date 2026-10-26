@@ -125,6 +125,11 @@ dialog li{margin-bottom:6px}
 .narrow{max-width:520px}
 .stack{display:grid;gap:14px}
 .stack input,.stack select,.stack textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg)}
+.password-field{position:relative}
+.stack .password-field input{padding-right:48px}
+.password-toggle{position:absolute;right:8px;top:50%;display:grid;place-items:center;width:36px;height:36px;transform:translateY(-50%);border:0;border-radius:8px;background:transparent;color:var(--muted)}
+.password-toggle:hover{color:var(--text)}
+.password-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .skeleton{height:150px;border-radius:14px;background:linear-gradient(90deg,var(--line),var(--surface),var(--line));background-size:200% 100%;animation:sk 1.2s infinite}
 @keyframes sk{to{background-position:-200% 0}}
 .pager{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
