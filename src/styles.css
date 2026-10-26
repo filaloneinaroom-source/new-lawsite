@@ -90,6 +90,12 @@ button{cursor:pointer}
 /* footer, dialog, toast */
 footer{padding-block:32px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-links{display:flex;align-items:center;gap:16px}
+.footer-links a{display:grid;place-items:center;width:28px;height:28px;color:var(--muted);transition:color .2s}
+.footer-links a:hover,.footer-back:hover{color:var(--text)}
+.footer-links svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.footer-links .icon-fill{fill:currentColor;stroke:none}
+.footer-back{color:var(--muted);transition:color .2s}
 dialog{margin:auto;width:min(560px,92vw);padding:32px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text)}
 dialog::backdrop{background:rgba(0,0,0,.45)}
 dialog h3{font-size:24px;letter-spacing:-.5px;margin:4px 0 12px;padding-right:32px}
