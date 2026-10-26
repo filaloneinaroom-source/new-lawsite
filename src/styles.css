@@ -146,6 +146,8 @@ dialog li{margin-bottom:6px}
 @keyframes sk{to{background-position:-200% 0}}
 .pager{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
 .pager .chip{display:grid;place-items:center;width:40px;height:40px;padding:0;border-radius:50%}
+.article-card{scroll-margin-block:100px;transition:border-color .2s,box-shadow .2s}
+.article-card.selected{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 .error{padding:20px;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
 .stat{padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}

@@ -5,15 +5,21 @@ import { useLang } from "../../context/LangContext";
 import { useArticles } from "../../hooks/useArticles";
 import { getLocalizedArticle } from "../../i18n/articleTranslations";
 
-const ArticleCard = ({ article, number }) => (
-  <div className="card"><small>#{number}</small><h3>{article.title.slice(0, 48)}</h3><p>{article.body.slice(0, 90)}…</p></div>
+const ArticleCard = ({ article, number, selected }) => (
+  <div id={`article-${number}`} className={`card article-card${selected ? " selected" : ""}`}>
+    <small>#{number}</small><h3>{article.title.slice(0, 48)}</h3><p>{article.body.slice(0, 90)}…</p>
+  </div>
 );
 
 export default function ArticlesSection(){
   const { t, lang } = useLang();
-  const [page, setPage] = useState(1);
-  const { status, items, loaded, reload } = useArticles(page);
-  const pages = Math.ceil(ARTICLES_TOTAL / PER_PAGE);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const { status, items, loaded, reload } = useArticles(1);
+
+  const selectArticle = number => {
+    setSelectedArticle(number);
+    document.getElementById(`article-${number}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
   return (
     <section id="articles" className="wrap section">
@@ -27,19 +33,20 @@ export default function ArticlesSection(){
           <ArticleCard
             key={article.id}
             article={getLocalizedArticle(article, lang)}
-            number={(page - 1) * PER_PAGE + index + 1}
+            number={index + 1}
+            selected={selectedArticle === index + 1}
           />
         ))}
       </div>
       {loaded && (
         <div className="pager" aria-label={t("articlePages")}>
-          {Array.from({ length: pages }, (_, i) => (
+          {Array.from({ length: ARTICLES_TOTAL }, (_, i) => (
             <button
               key={i}
               type="button"
-              className={"chip" + (i + 1 === page ? " on" : "")}
-              aria-current={i + 1 === page ? "page" : undefined}
-              onClick={() => setPage(i + 1)}
+              className={"chip" + (i + 1 === selectedArticle ? " on" : "")}
+              aria-pressed={i + 1 === selectedArticle}
+              onClick={() => selectArticle(i + 1)}
             >
               {i + 1}
             </button>
