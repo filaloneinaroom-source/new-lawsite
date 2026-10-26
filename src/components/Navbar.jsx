@@ -34,7 +34,6 @@ export default function Navbar(){
             <li><Link className="link" to="/" onClick={closeMenu}>{t("home")}</Link></li>
             <li><a className="link" href="#/" onClick={jump("about")}>{t("about")}</a></li>
             <li><a className="link" href="#/" onClick={jump("services")}>{t("services")}</a></li>
-            {session?.role === "admin" && <li><Link className="link" to="/admin" onClick={closeMenu}>{t("admin")}</Link></li>}
           </ul>
         <div className="tools">
           <select className="sel" aria-label={t("language")} value={lang} onChange={e => { setLang(e.target.value); closeMenu(); }}>

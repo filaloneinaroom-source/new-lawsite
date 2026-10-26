@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { store } from "../utils/storage";
-import { getUsers, isAdminEmail, parseToken, saveUsers, signToken } from "../utils/auth";
+import { getUsers, parseToken, saveUsers, signToken } from "../utils/auth";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
@@ -8,11 +8,7 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }){
   const [token, setToken] = useState(() => store.get("token", null));
   const [, refresh] = useReducer(n => n + 1, 0);
-  const parsedSession = parseToken(token);
-  const session = parsedSession && {
-    ...parsedSession,
-    role: isAdminEmail(parsedSession.sub) ? "admin" : "user"
-  };
+  const session = parseToken(token);            // данные токена или null
 
   // когда срок токена истекает — перерисовываем, session станет null
   useEffect(() => {
@@ -24,20 +20,13 @@ export function AuthProvider({ children }){
   const startSession = u => { const tk = signToken(u); store.set("token", tk); setToken(tk); };
 
   const login = (email, pass) => {
-    const normalizedEmail = email.trim().toLowerCase();
-    const list = getUsers();
-    const existingUser = list.find(x => x.email.trim().toLowerCase() === normalizedEmail && x.pass === pass);
-    if (!existingUser) return false;
-    const u = { ...existingUser, email: normalizedEmail, role: isAdminEmail(normalizedEmail) ? "admin" : existingUser.role };
-    if (u.role !== existingUser.role || u.email !== existingUser.email) {
-      saveUsers(list.map(user => user === existingUser ? u : user));
-    }
+    const u = getUsers().find(x => x.email === email && x.pass === pass);
+    if (!u) return false;
     startSession(u); return true;
   };
   const register = (name, email, pass) => {
-    const normalizedEmail = email.trim().toLowerCase();
-    const list = getUsers(); if (list.some(x => x.email.trim().toLowerCase() === normalizedEmail)) return false;
-    const u = { name, email: normalizedEmail, pass, role: isAdminEmail(normalizedEmail) ? "admin" : "user" };
+    const list = getUsers(); if (list.some(x => x.email === email)) return false;
+    const u = { name, email, pass, role: "user" };
     saveUsers([...list, u]); startSession(u); return true;
   };
   const logout = () => { store.remove("token"); setToken(null); };

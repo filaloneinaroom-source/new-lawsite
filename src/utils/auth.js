@@ -1,9 +1,6 @@
 import { SECRET } from "../config";
 import { store } from "./storage";
 
-export const ADMIN_EMAIL = "sydygalievameerim48@gmail.com";
-export const isAdminEmail = email => email?.trim().toLowerCase() === ADMIN_EMAIL;
-
 /* Демо JWT: header.payload.signature. Подпись здесь учебная, настоящую подпись делает сервер. */
 const hash = s => { let h = 5381; for (const c of s) h = ((h << 5) + h + c.charCodeAt(0)) >>> 0; return h.toString(36); };
 const enc = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+$/, "");

@@ -12,8 +12,6 @@ npm run build     # production-сборка в папку dist
 npm run preview   # просмотр сборки
 ```
 
-Демо-администратор: `admin@law.kg` / `admin123`.
-
 ## Структура
 
 ```
@@ -34,7 +32,7 @@ src/
                            ErrorBoundary, PrivateRoute, ScrollManager
   components/home/         Hero, TrustBar, ServicesSection, ArticlesSection,
                            About, BookingSection
-  pages/                   Home, AuthPage, Profile, AdminPage, NotFound
+  pages/                   Home, AuthPage, Profile, NotFound
 ```
 
 <!-- ## Соответствие оригиналу

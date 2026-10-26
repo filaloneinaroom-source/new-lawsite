@@ -10,7 +10,6 @@ import { LangProvider } from "./context/LangContext";
 import { ServicesProvider } from "./context/ServicesContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { ToastProvider } from "./context/ToastContext";
-import AdminPage from "./pages/AdminPage";
 import AuthPage from "./pages/AuthPage";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -34,7 +33,6 @@ export default function App(){
                         <Route path="/login" element={<AuthPage key="login" mode="login" />} />
                         <Route path="/register" element={<AuthPage key="register" mode="register" />} />
                         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-                        <Route path="/admin" element={<PrivateRoute role="admin"><AdminPage /></PrivateRoute>} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </ErrorBoundary>
