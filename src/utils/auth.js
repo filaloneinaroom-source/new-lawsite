@@ -24,5 +24,6 @@ export function parseToken(tk){
   }catch(_){ return null; }
 }
 
-export const getUsers = () => store.get("users", [{email:"admin@law.kg", pass:"admin123", role:"admin"}]);
+export const getUsers = () => store.get("users", [])
+  .filter(user => user.email?.trim().toLowerCase() !== "admin@law.kg");
 export const saveUsers = list => store.set("users", list);

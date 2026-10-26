@@ -72,7 +72,6 @@ export default function AuthPage({ mode }){
           {isLogin ? t("register") : t("login")}
         </button>
       </p>
-      {isLogin && <p className="hint">{t("demoAdmin")}: admin@law.kg / admin123</p>}
     </section>
   );
 }

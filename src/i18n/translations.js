@@ -15,7 +15,7 @@ export const TEXT = {
     forbidden:"Нет доступа: нужна роль администратора",notFound:"Страница не найдена",saved:"Сохранено",sent:"Заявка сохранена",
     wrong:"Что-то пошло не так",language:"Язык",theme:"Тема",close:"Закрыть",openMenu:"Открыть меню",closeMenu:"Закрыть меню",status:"Статус",attorney:"Адвокат",attorneyAvailability:"Доступность адвоката",acceptingRequests:"Запись на консультации открыта.",notAcceptingRequests:"Запись временно закрыта.",pauseBooking:"Закрыть запись",resumeBooking:"Возобновить запись",temporarilyUnavailable:"Адвокат временно не принимает записи. Попробуйте обратиться позже.",contacts:"Контакты",locations:"Города",back:"Назад",
     confidentiality:"Конфиденциальность",honestAssessment:"Честная оценка перспектив",plainLanguage:"Понятный язык",
-    emailLabel:"Email",token:"Токен",demoAdmin:"Демо-администратор",category:"Категория",serviceTitle:"Название",shortDescription:"Кратко",description:"Описание",points:"Пункты через запятую",confirmDelete:"Удалить эту услугу?",
+    emailLabel:"Email",token:"Токен",category:"Категория",serviceTitle:"Название",shortDescription:"Кратко",description:"Описание",points:"Пункты через запятую",confirmDelete:"Удалить эту услугу?",
     role:"Роль",userRole:"Пользователь",adminRole:"Администратор",googleLogin:"Вход через Google"},
   en:{pageTitle:"Meerim Sydygalieva — Attorney",pageDescription:"Attorney Meerim Chatyrkulovna Sydygalieva. Legal services and consultation booking.",
     home:"Home",about:"About",services:"Legal services",book:"Book a consultation",
@@ -33,7 +33,7 @@ export const TEXT = {
     forbidden:"Access denied: admin role required",notFound:"Page not found",saved:"Saved",sent:"Request saved",
     wrong:"Something went wrong",language:"Language",theme:"Theme",close:"Close",openMenu:"Open menu",closeMenu:"Close menu",status:"Status",attorney:"Attorney",attorneyAvailability:"Attorney availability",acceptingRequests:"Consultation booking is open.",notAcceptingRequests:"Booking is temporarily closed.",pauseBooking:"Close booking",resumeBooking:"Resume booking",temporarilyUnavailable:"The attorney is temporarily unavailable. Please check back later.",contacts:"Contacts",locations:"Locations",back:"Back",
     confidentiality:"Confidentiality",honestAssessment:"Honest assessment",plainLanguage:"Plain language",
-    emailLabel:"Email",token:"Token",demoAdmin:"Demo administrator",category:"Category",serviceTitle:"Name",shortDescription:"Short description",description:"Description",points:"Comma-separated points",confirmDelete:"Delete this service?",
+    emailLabel:"Email",token:"Token",category:"Category",serviceTitle:"Name",shortDescription:"Short description",description:"Description",points:"Comma-separated points",confirmDelete:"Delete this service?",
     role:"Role",userRole:"User",adminRole:"Administrator",googleLogin:"Sign in with Google"},
   ky:{pageTitle:"Мээрим Сыдыгалиева — адвокат",pageDescription:"Адвокат Мээрим Чатыркуловна Сыдыгалиева. Юридикалык кызматтар жана кеңеш алууга жазылуу.",
     home:"Башкы бет",about:"Адвокат жөнүндө",services:"Юридикалык кызматтар",book:"Кеңеш алууга жазылуу",
@@ -51,7 +51,7 @@ export const TEXT = {
     forbidden:"Кирүүгө уруксат жок: администратор укугу керек",notFound:"Барак табылган жок",saved:"Сакталды",sent:"Өтүнмө сакталды",
     wrong:"Ката кетти",language:"Тил",theme:"Тема",close:"Жабуу",openMenu:"Менюну ачуу",closeMenu:"Менюну жабуу",status:"Макам",attorney:"Адвокат",attorneyAvailability:"Адвокаттын жеткиликтүүлүгү",acceptingRequests:"Кеңеш алууга жазылуу ачык.",notAcceptingRequests:"Жазылуу убактылуу токтотулду.",pauseBooking:"Жазылууну жабуу",resumeBooking:"Жазылууну кайра ачуу",temporarilyUnavailable:"Адвокат убактылуу кабыл албайт. Кийинчерээк кайрылып көрүңүз.",contacts:"Байланыш",locations:"Шаарлар",back:"Артка",
     confidentiality:"Купуялуулук",honestAssessment:"Иштин келечегин калыс баалоо",plainLanguage:"Түшүнүктүү тилде",
-    emailLabel:"Электрондук почта",token:"Токен",demoAdmin:"Демо-администратор",category:"Категория",serviceTitle:"Аталышы",shortDescription:"Кыскача",description:"Сүрөттөмө",points:"Үтүр менен бөлүнгөн пункттар",confirmDelete:"Бул кызматты өчүрөсүзбү?",
+    emailLabel:"Электрондук почта",token:"Токен",category:"Категория",serviceTitle:"Аталышы",shortDescription:"Кыскача",description:"Сүрөттөмө",points:"Үтүр менен бөлүнгөн пункттар",confirmDelete:"Бул кызматты өчүрөсүзбү?",
     role:"Ролу",userRole:"Колдонуучу",adminRole:"Администратор",googleLogin:"Google аркылуу кирүү"}
 };
 

@@ -9,9 +9,10 @@ export function AuthProvider({ children }){
   const [token, setToken] = useState(() => store.get("token", null));
   const [, refresh] = useReducer(n => n + 1, 0);
   const parsedSession = parseToken(token);
-  const session = parsedSession && isAdminEmail(parsedSession.sub)
-    ? { ...parsedSession, role: "admin" }
-    : parsedSession;
+  const session = parsedSession && {
+    ...parsedSession,
+    role: isAdminEmail(parsedSession.sub) ? "admin" : "user"
+  };
 
   // когда срок токена истекает — перерисовываем, session станет null
   useEffect(() => {
