@@ -12,8 +12,10 @@ export default function About(){
         <div>
           <h2>{t("about")}</h2>
           <p>{t("aboutText")}</p>
+          <p className="about-slogan">{t("aboutSlogan")}</p>
           <ul className="facts">
             <li><span>{t("status")}</span>{t("attorney")}</li>
+            <li><span>{t("experience")}</span>{t("experienceYears")}</li>
             <li><span>{t("format")}</span>{t("onsite")} / {t("online")}</li>
           </ul>
           <button className="btn gold" onClick={() => scrollTo("booking")}>{t("book")}</button>
