@@ -8,6 +8,17 @@ export default function Footer(){
     <footer>
       <div className="wrap">
         <span>© 2026 Сыдыгалиева М. Ч., {t("attorney")}</span>
+        <div className="footer-details">
+          <div className="footer-column">
+            <strong>{t("contacts")}</strong>
+            <a href="tel:+996508200216">+996 508 200 216</a>
+          </div>
+          <div className="footer-column">
+            <strong>{t("locations")}</strong>
+            <span>Бишкек</span>
+            <span>Ош</span>
+          </div>
+        </div>
         <nav className="footer-links" aria-label={t("contacts")}>
           <a href="https://www.instagram.com/advokat_sydygalieva?rpxt=YmcxbHlrcmhndDdv&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true">

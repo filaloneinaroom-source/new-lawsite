@@ -90,6 +90,10 @@ button{cursor:pointer}
 /* footer, dialog, toast */
 footer{padding-block:32px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-details{display:flex;gap:32px}
+.footer-column{display:flex;flex-direction:column;gap:4px}
+.footer-column strong{color:var(--text);font-weight:600}
+.footer-column a:hover{color:var(--text)}
 .footer-links{display:flex;align-items:center;gap:16px}
 .footer-links a{display:grid;place-items:center;width:28px;height:28px;color:var(--muted);transition:color .2s}
 .footer-links a:hover,.footer-back:hover{color:var(--text)}
@@ -119,6 +123,8 @@ dialog li{margin-bottom:6px}
   .links{order:3;width:100%;margin:0;gap:24px;overflow-x:auto}
   .tools{margin-left:auto}
   .tools .btn{display:none}
+  footer .wrap{align-items:flex-start}
+  .footer-details{gap:20px}
   .section{padding-block:56px}
   .grid,.fields{grid-template-columns:1fr}
   .form{padding:22px}
