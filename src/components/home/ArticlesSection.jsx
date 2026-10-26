@@ -24,8 +24,15 @@ export default function ArticlesSection(){
   return (
     <section id="articles" className="wrap section">
       <SectionHead title={t("articles")} sub={t("articlesSub")} />
-      <div className="grid">
-        {status === "loading" && Array.from({ length: PER_PAGE }, (_, i) => <div key={i} className="skeleton" />)}
+      <div className="grid" aria-busy={status === "loading"}>
+        {status === "loading" && Array.from({ length: PER_PAGE }, (_, i) => (
+          <div className="card article-skeleton" key={i} aria-hidden="true">
+            <span className="skeleton skeleton-number"></span>
+            <span className="skeleton skeleton-title"></span>
+            <span className="skeleton skeleton-line"></span>
+            <span className="skeleton skeleton-line short"></span>
+          </div>
+        ))}
         {status === "error" && (
           <div className="error">{t("loadError")} <button className="linkbtn" onClick={reload}>{t("retry")}</button></div>
         )}
